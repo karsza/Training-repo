@@ -17,6 +17,46 @@ public class List {
         }
         return true;
     }
+    public boolean prepend (Node newNode){
+        if (head == null){
+            head = newNode;
+            last = head;
+        }
+        else{
+            newNode.next = head;
+            head = newNode;
+        }
+        return true;
+    }
+    public boolean append (Node newNode){
+        if (head==null) {
+            head = newNode;
+            last = head;
+        }
+        else {
+            last.next = last;
+            last = newNode;
+        }
+        return true;
+    }
+    public boolean delete (int value){
+        if (head==null){
+            return false;
+        }
+        if ((head==last)&&(head.equals(value))) {
+            head = null;
+        }
+        if ((head.next==last)&&(head.next.equals(value))){
+            head=last;
+        }
+        if (head.next.equals(value)) {
+            head.next = head.next.next;
+        }
+        if (head.equals(value)) {
+            head.next = head;
+        }
+        return true;
+        }
 
     @Override
     public boolean equals(Object o) {
@@ -26,29 +66,40 @@ public class List {
         Node list1;
         list1 = this.head;
         Node list2;
-        list2 = this.head;
+        list2 = list.head;
         while(true) {
+            if (list1.value!=list2.value)
+                return false;
             if (list1.next == null && list2.next != null)
                 return false;
             if (list1.next != null && list2.next == null)
                 return false;
             if (list1.next == null && list2.next == null)
                 return true;
-            if (list1.value!=list2.value)
-                return false;
             else {
                 list1=list1.next;
                 list2=list2.next;
             }
+            return true;
         }
-        return true;
-
+    }
+    @Override
+    public int hashCode() {
+        return Objects.hash(head, last);
     }
 
     @Override
-    public int hashCode() {
-
-        return Objects.hash(head, last);
+    public String toString() {
+        return "List{" +
+                "head= " + head + head.next;
+    }
+    public void printList (){
+        Node currentNode = this.head;
+        System.out.println("List: ");
+        while (currentNode!=null){
+            System.out.println(currentNode.value);
+            currentNode=currentNode.next;
+        }
     }
 }
 
