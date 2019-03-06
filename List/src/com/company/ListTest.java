@@ -30,6 +30,15 @@ class ListTest {
         assertNotEquals(list2,list1);
 
     }
+    @Test
+    void equalsOfTwoEmptyLists(){
+        List list1 = new List();
+        List list2 = new List();
+
+        assertEquals(list1,list2);
+    }
+
+
 
     @Test
     void add_simple() {
@@ -63,6 +72,46 @@ class ListTest {
 
         assertEquals(expected,list1);
     }
+    @Test
+    void delete(){
+        List list1 = new List();
+        list1.add(new Node(3)).add(new Node (33)).add(new Node (333));
+        list1.delete(33);
+        List expected = new List();
+        expected.add(new Node(3)).add(new Node(333));
 
+        assertEquals(list1,expected);
+    }
+    @Test
+    void deleteFrom1elementList() {
+        List list1 = new List();
+        list1.add(new Node(11));
+        List expected = new List();
+
+        assertEquals(list1,expected);
+    }
+    @Test
+    void deleteFirst(){
+        List list1 = new List();
+        list1.add(new Node(33)).add(new Node (33)).add(new Node (333));
+        list1.delete(33);
+        List expected = new List();
+        expected.add(new Node(333));
+
+        assertEquals(list1,expected);
+    }
+
+
+    @Test
+    void bubbleSort(){
+        List list = new List();
+        list.add(new Node(3)).add(new Node(2)).add(new Node(1));
+
+        List expected = new List();
+        expected.add(new Node(1)).add(new Node(2)).add(new Node(3));
+
+        list.bubbleSort();
+        assertEquals(list, expected);
+    }
 
 }

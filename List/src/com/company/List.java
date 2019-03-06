@@ -6,7 +6,7 @@ public class List {
     Node head;
     Node last;
 
-    public boolean add (Node newNode){
+    public List add (Node newNode){
         if (head==null) {
             head = newNode;
             last = head;
@@ -15,7 +15,7 @@ public class List {
             last.next = newNode;
             last = newNode;
         }
-        return true;
+        return this;
     }
     public boolean prepend (Node newNode){
         if (head == null){
@@ -55,6 +55,7 @@ public class List {
         if (head.equals(value)) {
             head.next = head;
         }
+
         return true;
         }
 
@@ -67,21 +68,20 @@ public class List {
         list1 = this.head;
         Node list2;
         list2 = list.head;
-        while(true) {
+        while(list1!=null&&list2!=null) {
             if (list1.value!=list2.value)
                 return false;
             if (list1.next == null && list2.next != null)
                 return false;
             if (list1.next != null && list2.next == null)
                 return false;
-            if (list1.next == null && list2.next == null)
-                return true;
             else {
                 list1=list1.next;
                 list2=list2.next;
             }
-            return true;
         }
+        return true;
+
     }
     @Override
     public int hashCode() {
@@ -100,6 +100,10 @@ public class List {
             System.out.println(currentNode.value);
             currentNode=currentNode.next;
         }
+    }
+
+    public void bubbleSort(){
+
     }
 }
 
