@@ -73,14 +73,27 @@ class ListTest {
         assertEquals(expected,list1);
     }
     @Test
+    void append(){
+        List list = new List();
+        list.add(new Node(4)).add(new Node(5));
+        List expected = new List();
+        list.append(new Node(6));
+        expected.add(new Node(4)).add(new Node(5)).add(new Node(6));
+
+        assertEquals(expected,list);
+    }
+    @Test
     void delete(){
         List list1 = new List();
-        list1.add(new Node(3)).add(new Node (33)).add(new Node (333));
+        list1.add(new Node(3));
+        list1.add(new Node (33));
+        list1.add(new Node (333));
         list1.delete(33);
         List expected = new List();
-        expected.add(new Node(3)).add(new Node(333));
+        expected.add(new Node(3));
+        expected.add(new Node(333));
 
-        assertEquals(list1,expected);
+        assertEquals(expected,list1);
     }
     @Test
     void deleteFrom1elementList() {
@@ -100,8 +113,26 @@ class ListTest {
 
         assertEquals(list1,expected);
     }
+    @Test
+    void deleteAll(){
+        List list1 = new List();
+        list1.add(new Node(2)).add(new Node(2)).add(new Node (2));
+        list1.delete(2);
+        List expected = new List();
 
+        assertEquals(expected,list1);
+    }
 
+    @Test
+    void deleteLast(){
+        List list1 = new List();
+        list1.add(new Node(2)).add(new Node(2)).add(new Node (21));
+        list1.delete(21);
+        List expected = new List();
+        expected.add(new Node(2)).add(new Node(2));
+
+        assertEquals(expected,list1);
+    }
     @Test
     void bubbleSort(){
         List list = new List();
@@ -110,8 +141,8 @@ class ListTest {
         List expected = new List();
         expected.add(new Node(1)).add(new Node(2)).add(new Node(3));
 
-        list.bubbleSort();
-        assertEquals(list, expected);
+        list.bubbleSort(list);
+        assertEquals(expected,list);
     }
 
 }

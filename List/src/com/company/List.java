@@ -34,30 +34,44 @@ public class List {
             last = head;
         }
         else {
-            last.next = last;
+            last.next = newNode;
             last = newNode;
         }
         return true;
     }
-    public boolean delete (int value){
-        if (head==null){
-            return false;
-        }
-        if ((head==last)&&(head.equals(value))) {
-            head = null;
-        }
-        if ((head.next==last)&&(head.next.equals(value))){
-            head=last;
-        }
-        if (head.next.equals(value)) {
-            head.next = head.next.next;
-        }
-        if (head.equals(value)) {
-            head.next = head;
-        }
+    public boolean delete (int toBeDeleted) {
 
-        return true;
+        Node current = head;
+        while (current!=null) {
+            if (current.next != null)
+                if (current.next.value == toBeDeleted) {
+                    current.next = current.next.next;
+                }
+                current = current.next;
         }
+        if (head.value == toBeDeleted) {
+            head = head.next;
+        }
+        return true;
+    }
+    public void bubbleSort(List list){
+        if (list!=null) {
+            Node current = head;
+            boolean swap = true;
+            while((swap==true)){
+                swap = false;
+                if (current.value > current.next.value) {
+                    current.value = current.value + current.next.value;
+                    current.next.value = current.value - current.next.value;
+                    current.value = current.value - current.next.value;
+                    swap = true;
+                }
+                if (current.next!=null)
+                    current = current.next;
+            }
+
+        }
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -102,9 +116,7 @@ public class List {
         }
     }
 
-    public void bubbleSort(){
 
-    }
 }
 
 
