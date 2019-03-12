@@ -144,5 +144,36 @@ class ListTest {
         list.bubbleSort(list);
         assertEquals(expected,list);
     }
+    @Test
+    void bubbleSortWhen2elementList(){
+        List list = new List();
+        list.add(new Node(5)).add(new Node(1));
+
+        List expected = new List();
+        expected.add(new Node(1)).add(new Node(5));
+
+        list.bubbleSort(list);
+        assertEquals(expected,list);
+
+    }
+    @Test
+    void bubbleSortWhenNotSwappingFirst() {
+        List list = new List();
+        list.add(new Node(1)).add(new Node(3)).add(new Node(2));
+
+        List expected = new List();
+        expected.add(new Node(1)).add(new Node(2)).add(new Node(3));
+
+        list.bubbleSort(list);
+        assertEquals(expected, list);
+    }
+//    @Test
+//    void bubbleSortWhenEmptyList(){
+//        List list = new List();
+//        list.bubbleSort(list);
+//        List expected = new List();
+//        assertEquals(expected,list);
+//    }
+//
 
 }

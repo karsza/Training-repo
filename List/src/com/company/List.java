@@ -6,71 +6,100 @@ public class List {
     Node head;
     Node last;
 
-    public List add (Node newNode){
-        if (head==null) {
+    public List add(Node newNode) {
+        if (head == null) {
             head = newNode;
             last = head;
-        }
-        else {
+        } else {
             last.next = newNode;
             last = newNode;
         }
         return this;
     }
-    public boolean prepend (Node newNode){
-        if (head == null){
+
+    public boolean prepend(Node newNode) {
+        if (head == null) {
             head = newNode;
             last = head;
-        }
-        else{
+        } else {
             newNode.next = head;
             head = newNode;
         }
         return true;
     }
-    public boolean append (Node newNode){
-        if (head==null) {
+
+    public boolean append(Node newNode) {
+        if (head == null) {
             head = newNode;
             last = head;
-        }
-        else {
+        } else {
             last.next = newNode;
             last = newNode;
         }
         return true;
     }
-    public boolean delete (int toBeDeleted) {
+
+    public boolean delete(int toBeDeleted) {
 
         Node current = head;
-        while (current!=null) {
+        while (current != null) {
             if (current.next != null)
                 if (current.next.value == toBeDeleted) {
                     current.next = current.next.next;
                 }
-                current = current.next;
+            current = current.next;
         }
         if (head.value == toBeDeleted) {
             head = head.next;
         }
         return true;
     }
-    public void bubbleSort(List list){
-        if (list!=null) {
-            Node current = head;
-            boolean swap = true;
-            while((swap==true)){
-                swap = false;
+
+    public void bubbleSort(List list) {
+        Node current = head;
+        int swap = 1;
+        while (swap != 0) {
+            swap = 0;
+            current = head;
+            while (current.next != null) {
                 if (current.value > current.next.value) {
                     current.value = current.value + current.next.value;
                     current.next.value = current.value - current.next.value;
                     current.value = current.value - current.next.value;
-                    swap = true;
+                    swap++;
                 }
-                if (current.next!=null)
-                    current = current.next;
+                current = current.next;
             }
 
         }
+
+    }
+
+    public void bubbleSort1(List list) {
+        Node current = head;
+        int swap = 0;
+//        if (list!=null){
+//            System.out.println("nothing to be sorted empty list");
+
+        do {
+            swap = 0;
+            if (current.next != null) {
+                if (current.value > current.next.value) {
+                    current.value = current.value + current.next.value;
+                    current.next.value = current.value - current.next.value;
+                    current.value = current.value - current.next.value;
+                    current = current.next;
+                    swap++;
+                }
+                if (((current.next != null) && current.value <= current.next.value)) {
+                    current = current.next;
+                }
+            }
+            if (current.next == null) {
+                current = head;
+            }
+        }
+        while ((list != null) && (swap > 0));
     }
 
     @Override
