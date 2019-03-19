@@ -74,34 +74,24 @@ public class List {
         }
 
     }
-
-    public void bubbleSort1(List list) {
+    public void bubbleSortWithReferences(List list) {
         Node current = head;
-        int swap = 0;
-//        if (list!=null){
-//            System.out.println("nothing to be sorted empty list");
-
-        do {
+        Node temp;
+        int swap = 1;
+        while (swap != 0) {
             swap = 0;
-            if (current.next != null) {
+            current = head;
+            while (current.next != null) {
                 if (current.value > current.next.value) {
-                    current.value = current.value + current.next.value;
-                    current.next.value = current.value - current.next.value;
-                    current.value = current.value - current.next.value;
+                    temp = current;
                     current = current.next;
+                    current.next = temp;
                     swap++;
                 }
-                if (((current.next != null) && current.value <= current.next.value)) {
-                    current = current.next;
-                }
-            }
-            if (current.next == null) {
-                current = head;
+                current = current.next;
             }
         }
-        while ((list != null) && (swap > 0));
     }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

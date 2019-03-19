@@ -28,7 +28,6 @@ class ListTest {
 
         assertNotEquals(list1,list2);
         assertNotEquals(list2,list1);
-
     }
     @Test
     void equalsOfTwoEmptyLists(){
@@ -37,9 +36,6 @@ class ListTest {
 
         assertEquals(list1,list2);
     }
-
-
-
     @Test
     void add_simple() {
         List list1 = new List();
@@ -142,6 +138,17 @@ class ListTest {
         expected.add(new Node(1)).add(new Node(2)).add(new Node(3));
 
         list.bubbleSort(list);
+        assertEquals(expected,list);
+    }
+    @Test
+    void bubbleSortWithReferences(){
+        List list = new List();
+        list.add(new Node(3)).add(new Node(2)).add(new Node(1));
+
+        List expected = new List();
+        expected.add(new Node(1)).add(new Node(2)).add(new Node(3));
+
+        list.bubbleSortWithReferences(list);
         assertEquals(expected,list);
     }
     @Test
