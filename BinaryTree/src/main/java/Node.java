@@ -45,7 +45,6 @@ public class Node {
             //if (!(a.value == b.value)) return false;
             return false;
         }
-
         // recursively check branches
         if (!equals(a.left, b.left)) return false;
         if (!equals(a.right, b.right)) return false;
@@ -53,5 +52,4 @@ public class Node {
         // we've eliminated all possibilities for non-equality, so trees must be equal
         return true;
     }
-
 }

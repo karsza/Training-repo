@@ -50,6 +50,17 @@ class NodeTest {
         assertTrue(Node.equals(a1,a2));
     }
     @Test
+    void insert2(){
+        Node a1 = new Node (10);
+        Node a2 = new Node (10);
+        a1.insert(19);
+        a1.insert(4);
+        a2.right = new Node (19);
+        a2.left = new Node (4);
+
+        assertTrue(Node.equals(a1,a2));
+    }
+    @Test
     void printTree() {
         Node a1 = new Node(5);
         a1.insert(4);
