@@ -38,7 +38,6 @@ public class Katas {
         Map<String, String> finalMap = new HashMap<String, String>();
         for (int i = 0; i < array.length; i++) {
             finalMap.put(array[i], array[i]+ "n't");
-//            finalMap.put(array[i]+"n't",array[i]);
             finalMap.put(finalMap.get(array[i]), array[i]);
         }
         return finalMap;
@@ -54,11 +53,15 @@ public class Katas {
                         finalMap.put(array[i] + "n't", array[i]);
                         finalMap.put(array[i].toUpperCase(), array[i].toUpperCase() + "N'T");
                         finalMap.put(array[i].toUpperCase() + "N'T", array[i].toUpperCase());
+                        finalMap.put((startWithCapitalLetter(array[i])+"n't"),(startWithCapitalLetter(array[i])));
+                        finalMap.put((startWithCapitalLetter(array[i])),(startWithCapitalLetter(array[i])+"n't"));
                     } else {
                         finalMap.put("can", "can't");
                         finalMap.put("can't", "can");
                         finalMap.put("CAN", "CAN'T");
                         finalMap.put("CAN'T", "CAN");
+                        finalMap.put("Can't","Can");
+                        finalMap.put("Can","Can't");
                     }
                 }
             }
@@ -66,4 +69,16 @@ public class Katas {
 
         return finalMap;
     }
+    public static String startWithCapitalLetter (String word){
+        char[] stringToArray = word.toCharArray();
+        stringToArray[0] = Character.toUpperCase(stringToArray[0]);
+
+        StringBuilder builder = new StringBuilder();
+        for (char letter: stringToArray){
+            builder.append(letter);
+        }
+        word = builder.toString();
+    return word;
+    }
+
 }

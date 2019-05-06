@@ -89,11 +89,33 @@ class KatasTest {
 
         assertEquals(map1,Katas.addtoMapLimitedPool(pool,limitedPoolOfWords));
     }
+    @Test
+    public void addToMapLimitedPool2(){
+        String[] pool = new String[]{"are", "can","would"};
+        Set<String> limitedPoolOfWords = new HashSet<String>();
+        limitedPoolOfWords.add("would");
+
+        Map<String,String> map1 = new HashMap<String, String>();
+        map1.put("would","wouldn't");
+        map1.put("wouldn't","would");
+        map1.put("WOULD","WOULDN'T");
+        map1.put("WOULDN'T","WOULD");
+        map1.put("Would","Wouldn't");
+        map1.put("Wouldn't","Would");
+        assertEquals(map1,Katas.addtoMapLimitedPool(pool,limitedPoolOfWords));
+    }
 
     @Test
     public void arrayWithWords(){
         String sentence = "Ala ma kota";
         String[] array = new String[]{"Ala","ma","kota"};
         assertArrayEquals(array,sentence.split(" "));
+    }
+    @Test
+    public void startWithCapitalLetter(){
+        String word = "karolina";
+        String result = "Karolina";
+
+        assertEquals(result,Katas.startWithCapitalLetter(word));
     }
 }
