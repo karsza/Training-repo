@@ -19,6 +19,19 @@ class KatasTest {
         assertEquals("I do see why it WOULDN'T be them", Katas.speechCorrection(words1, "I don't see why it WOULD be them"));
     }
     @Test
+    public void speechCorrImproved() {
+        String[] words = new String[]{"can","do","have","was","would"};
+        final Set<String> words1 = Katas.addToSet(words);
+        assertEquals("I don't like pizza.", Katas.speechCorrectionImproved(words1, "I do like pizza."));
+        assertEquals("I have seen you wearing that hat before.", Katas.speechCorrectionImproved(words1, "I haven't seen you wearing that hat before."));
+        assertEquals("I could see why you wouldn't say that.", Katas.speechCorrectionImproved(words1, "I could see why you would say that."));
+        assertEquals("I didn't say it! It was me!", Katas.speechCorrectionImproved(words1, "I didn't say it! It wasn't me!"));
+        assertEquals("I must be more careful in future.", Katas.speechCorrectionImproved(words1, "I must be more careful in future."));
+        assertEquals("YES, WE CAN'T", Katas.speechCorrectionImproved(words1, "YES, WE CAN"));
+        assertEquals("Would you believe it? I can!", Katas.speechCorrectionImproved(words1, "Wouldn't you believe it? I can't!"));
+        assertEquals("I do see why it WOULDN'T be them", Katas.speechCorrectionImproved(words1, "I don't see why it WOULD be them"));
+    }
+    @Test
     public void addToSet(){
         String[] array1 = new String[]{"me","myself","I"};
         HashSet<String> set1 = new HashSet<String>();
@@ -117,5 +130,13 @@ class KatasTest {
         String result = "Karolina";
 
         assertEquals(result,Katas.startWithCapitalLetter(word));
+    }
+    @Test
+    public void replaceWord(){
+        Map <String,String> mapWithWords = new HashMap<String, String>();
+        mapWithWords.put("see","saw");
+        mapWithWords.put("do","done");
+
+        assertEquals("done",Katas.replaceWord("do",mapWithWords));
     }
 }

@@ -1,6 +1,35 @@
 import java.util.*;
 
 public class Katas {
+    public static String speechCorrectionImproved(final Set<String> words, final String speech) {
+        String[] wordsPool = new String[]{"are", "can","could","did", "do","has","have","is", "might","must", "should","was",
+                "were","would"};
+        Map<String, String> wordsMap;
+        wordsMap = addtoMapLimitedPool(wordsPool,words);
+
+        String intendedSpeech="";
+        String word="";
+
+        char[] arrayForSpeech = speech.toCharArray();
+
+        for (int i=0;i<arrayForSpeech.length;i++){
+            if ((Character.isLetter(arrayForSpeech[i])) || ((arrayForSpeech[i] == '\''))) {
+                word = word + arrayForSpeech[i];
+            }
+            else if (word.length()==0) {
+                intendedSpeech = intendedSpeech + arrayForSpeech[i];
+            }
+            else {
+                intendedSpeech = intendedSpeech + replaceWord(word, wordsMap) + arrayForSpeech[i];
+                word = "";
+            }
+        }
+        if (word!="")
+            intendedSpeech=intendedSpeech+replaceWord(word,wordsMap);
+
+        return intendedSpeech;
+    }
+
 
     public static String speechCorrection(final Set<String> words, final String speech) {
         String[] wordsPool = new String[]{"are", "can","could","did", "do","has","have","is", "might","must", "should","was",
@@ -11,10 +40,7 @@ public class Katas {
         String[] arrayFromSpeech = speech.split(" ");
         String intendedSpeech = "";
         for (int i=0;i<arrayFromSpeech.length;i++){
-            if (wordsMap.containsKey(arrayFromSpeech[i]))
-                arrayFromSpeech[i]=wordsMap.get(arrayFromSpeech[i]);
-
-//            intendedSpeech = intendedSpeech + arrayFromSpeech[i]+" ";
+            arrayFromSpeech[i]=replaceWord(arrayFromSpeech[i],wordsMap);
         }
         StringBuilder builder = new StringBuilder();
         for (String word:arrayFromSpeech){
@@ -79,6 +105,13 @@ public class Katas {
         }
         word = builder.toString();
     return word;
+    }
+
+    public static String replaceWord (String word, Map<String,String> correctWord){
+        if (correctWord.containsKey(word)){
+            return correctWord.get(word);
+        }
+        return word;
     }
 
 }
