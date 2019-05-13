@@ -30,7 +30,6 @@ public class Katas {
         return intendedSpeech;
     }
 
-
     public static String speechCorrection(final Set<String> words, final String speech) {
         String[] wordsPool = new String[]{"are", "can","could","did", "do","has","have","is", "might","must", "should","was",
                 "were","would"};

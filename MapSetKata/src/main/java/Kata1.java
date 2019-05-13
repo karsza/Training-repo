@@ -1,3 +1,5 @@
+//connect k/many consecutive strings to receive longest possible string
+
 public class Kata1 {
     public static String longestConsec(String[] strarr, int k) {
         String max="";
