@@ -12,10 +12,6 @@ public class Kata3 {
         ArrayList<String> arrayListWithAll = new ArrayList<String>();
 
         for (long i=m; i<=n;i++){
-            if (i==1){
-                String a1="1";
-                arrayListWithAll.add("[" + i + ", " + a1 + "]");
-            }
             if (perfect2Root(sumOfNrsInArrayList(squareDividersOafNumberAndSquareThem((i))))>0) {
                 String a1 = String.valueOf(sumOfNrsInArrayList(squareDividersOafNumberAndSquareThem((i))));
                 arrayListWithAll.add("[" + i + ", " + a1 + "]");
@@ -25,13 +21,11 @@ public class Kata3 {
 
         return Arrays.toString(arrayWithStrings);
     }
-    public static int perfect2Root(long  number){
+    public static int perfect2Root(long number){
         int result = 0;
-        for (int i=1;i<number;i++){
-            if ((i*i)==number){
-                result=i;
+        if (Math.sqrt(number)==Math.floor(Math.sqrt(number))){
+            result=(int)Math.sqrt(number);
             }
-        }
         return result;
     }
     public static long sumOfNrsInArrayList (ArrayList<Long> list){
@@ -43,11 +37,12 @@ public class Kata3 {
     }
     public static ArrayList<Long> squareDividersOafNumberAndSquareThem(long number){
         ArrayList<Long> squaresList = new ArrayList<Long>();
-        for (long i=1; i<=number;i++){
+        for (long i=1; i<=number/2;i++){
             if (number%i==0){
                 squaresList.add(i*i);
             }
         }
+        squaresList.add(number*number);
         return squaresList;
     }
 }
