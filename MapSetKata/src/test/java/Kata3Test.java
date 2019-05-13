@@ -9,9 +9,9 @@ class Kata3Test {
 
     @Test
     public void squareRoot(){
-        assertEquals(9,Kata3.squereRoot(81));
-        assertEquals(0,Kata3.squereRoot(7));
-        assertEquals(2,Kata3.squereRoot(4));
+        assertEquals(9,Kata3.perfect2Root(81));
+        assertEquals(0,Kata3.perfect2Root(7));
+        assertEquals(2,Kata3.perfect2Root(4));
     }
     @Test
     void sumOfNrsInArrayList(){

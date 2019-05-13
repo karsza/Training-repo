@@ -6,6 +6,7 @@ import java.util.Arrays;
 //Given two integers m, n (1 <= m <= n) we want to find all integers between m and n whose sum of squared
 // divisors is itself a square. 42 is such a number.
 //The result will be an array of arrays or of tuples (in C an array of Pair) or a string, each subarray having two elements, first the number whose squared divisors is a square and then the sum of the squared divisors.
+
 public class Kata3 {
     public static String listSquared(long m, long n){
         ArrayList<String> arrayListWithAll = new ArrayList<String>();
@@ -15,18 +16,16 @@ public class Kata3 {
                 String a1="1";
                 arrayListWithAll.add("[" + i + ", " + a1 + "]");
             }
-            if (squereRoot(sumOfNrsInArrayList(squareDividersOafNumberAndSquareThem(Long.valueOf(i))))>0) {
-                String a1 = String.valueOf(sumOfNrsInArrayList(squareDividersOafNumberAndSquareThem(Long.valueOf(i))));
+            if (perfect2Root(sumOfNrsInArrayList(squareDividersOafNumberAndSquareThem((i))))>0) {
+                String a1 = String.valueOf(sumOfNrsInArrayList(squareDividersOafNumberAndSquareThem((i))));
                 arrayListWithAll.add("[" + i + ", " + a1 + "]");
             }
         }
         String[] arrayWithStrings = arrayListWithAll.toArray(new String[arrayListWithAll.size()]);
 
-        for (String x:arrayWithStrings){
-        }
         return Arrays.toString(arrayWithStrings);
     }
-    public static int squereRoot(long  number){
+    public static int perfect2Root(long  number){
         int result = 0;
         for (int i=1;i<number;i++){
             if ((i*i)==number){
@@ -38,7 +37,7 @@ public class Kata3 {
     public static long sumOfNrsInArrayList (ArrayList<Long> list){
         long sum = 0;
         for (Long l : list){
-            sum=sum+l;
+            sum+=l;
         }
         return sum;
     }
