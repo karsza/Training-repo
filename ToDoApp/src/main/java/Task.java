@@ -4,7 +4,7 @@ public class Task {
 //tests
     //to jason
     private String subject;
-    private String status;//to be enum
+    private Status status;
 
     public String getSubject() {
         return subject;
@@ -13,15 +13,15 @@ public class Task {
         this.subject = subject;
     }
 
-    public String getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 
-    public Task(String subject, String status) {
+    public Task(String subject, Status status) {
         this.subject = subject;
         this.status = status;
     }
