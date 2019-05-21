@@ -1,7 +1,7 @@
 import java.util.Objects;
 
 public class Task {
-//tests
+
     //to jason
     private String subject;
     private Status status;
@@ -25,7 +25,6 @@ public class Task {
         this.subject = subject;
         this.status = status;
     }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

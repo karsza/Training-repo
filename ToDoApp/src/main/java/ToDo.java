@@ -24,11 +24,31 @@ public class ToDo {
         return false;
     }
     public Task findTask (Task taskToBeFound){
-        for (Task taskX :this.toDoList) {
+        for (Task taskX : this.toDoList) {
             if (taskX.equals(taskToBeFound))
                 return taskX;
         }
         return null;
+    }
+    //find by partial or full string
+    //add tests
+    public ArrayList<Task> findTaskBySubject (String word){
+        ArrayList<Task> list = new ArrayList<>();
+        for (Task taskX : this.toDoList){
+            if (taskX.getSubject().contains(word)){
+                list.add(taskX);
+            }
+        }
+        return list;
+    }
+    public ArrayList<Task> findTaskByStatus (Enum status){
+        ArrayList<Task> list = new ArrayList<>();
+        for (Task taskX : this.toDoList){
+            if (taskX.getStatus().equals(status)){
+                list.add(taskX);
+            }
+        }
+        return list;
     }
 
     @Override
