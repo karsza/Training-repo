@@ -57,6 +57,7 @@ public class ToDo {
         if (!(o instanceof ToDo)) return false;
         ToDo toDo = (ToDo) o;
         return Objects.equals(toDoList, toDo.toDoList);
+
     }
 
     @Override

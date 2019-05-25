@@ -61,7 +61,23 @@ class ToDoTest {
         toDo1.findTask(task3);
 
         assertEquals(task3,toDo1.findTask(task2));
-
     }
+    @org.junit.jupiter.api.Test
+    void findTaskBySubject(){
+        ToDo a = new ToDo();
+        Task task2 = new Task ("Buy tomatoes", Status.DONE);
+        Task task3 = new Task ("Peel onion", Status.DONE);
+        Task task4 = new Task ("Grind meat", Status.DONE);
+        Task task5 = new Task ("Add pepper", Status.DONE);
+        a.addTask(task2);
+        a.addTask(task3);
+        a.addTask(task4);
+        a.addTask(task5);
+
+        ArrayList <Task> toDo2 = new ArrayList<>();
+        toDo2.add(task4);
+
+        assertEquals(toDo2,a.findTaskBySubject("Grind"));
+        }
 
 }
