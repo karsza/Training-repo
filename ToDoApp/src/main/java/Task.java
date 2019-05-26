@@ -1,3 +1,5 @@
+import org.codehaus.jackson.map.ObjectMapper;
+
 import java.util.Objects;
 
 public class Task {
@@ -24,6 +26,18 @@ public class Task {
     public Task(String subject, Status status) {
         this.subject = subject;
         this.status = status;
+    }
+    public String toJson (){
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            // convert user object to json string and return it
+            return (mapper.writeValueAsString(this));
+        }
+        catch (java.io.IOException e) {
+            // catch various errors
+            e.printStackTrace();
+        }
+        return "";
     }
     @Override
     public boolean equals(Object o) {

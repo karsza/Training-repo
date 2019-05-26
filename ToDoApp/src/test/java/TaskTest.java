@@ -18,4 +18,10 @@ class TaskTest {
 
         assertTrue(task1.equals(task2));
     }
+    @Test
+    void taskToJson(){
+        Task task1 = new Task ("Write toJson",Status.INPROGRESS);
+        String expectedJson = "{\"subject\":\"Write toJson\",\"status\":\"INPROGRESS\"}";
+        assertEquals(expectedJson,task1.toJson());
+    }
 }

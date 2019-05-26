@@ -3,7 +3,6 @@ import java.util.Objects;
 
 public class ToDo {
 
-    //to jason
     ArrayList<Task> toDoList;
 
     public ToDo (){
@@ -30,8 +29,6 @@ public class ToDo {
         }
         return null;
     }
-    //find by partial or full string
-    //add tests
     public ArrayList<Task> findTaskBySubject (String word){
         ArrayList<Task> list = new ArrayList<>();
         for (Task taskX : this.toDoList){
@@ -50,6 +47,9 @@ public class ToDo {
         }
         return list;
     }
+//    public String toDoToJson (ArrayList<Task> toDoList){
+//
+//    }
 
     @Override
     public boolean equals(Object o) {
