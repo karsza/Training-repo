@@ -18,4 +18,37 @@ class Kata7Test {
         System.out.println("Input: {-5,-5,7,7,12,0}");
         assertEquals(o, Kata7.sumConsecutives(i));
     }
+    @Test
+    public void abcdeReturnsZero() {
+        assertEquals(0, Kata7.duplicateCount("abcde"));
+    }
+
+    @Test
+    public void abcdeaReturnsOne() {
+        assertEquals(1, Kata7.duplicateCount("abcdea"));
+    }
+
+    @Test
+    public void indivisibilityReturnsOne() {
+        assertEquals(1, Kata7.duplicateCount("indivisibility"));
+    }
+    @Test
+    public void testMultiple(){
+        assertEquals(2,Kata7.duplicateCount("asdfghjklaqwertyq") );
+    }
+
+    @Test
+    public void reallyLongStringContainingDuplicatesReturnsThree() {
+        String testThousandA = new String(new char[1000]).replace('\0', 'a');
+        String testHundredB = new String(new char[100]).replace('\0', 'b');
+        String testTenC = new String(new char[10]).replace('\0', 'c');
+        String test1CapitalA = new String(new char[1]).replace('\0', 'A');
+        String test1d = new String(new char[1]).replace('\0', 'd');
+        String test = test1d + test1CapitalA + testTenC +
+                testHundredB + testThousandA;
+
+
+        assertEquals(3, Kata7.duplicateCount(test));
+    }
+
 }

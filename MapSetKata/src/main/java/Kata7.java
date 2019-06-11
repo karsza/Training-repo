@@ -4,8 +4,7 @@
 //Same meaning: 1 == 1
 //1 != -1
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Kata7 {
     public static List<Integer> sumConsecutives(List<Integer> s) {
@@ -22,5 +21,29 @@ public class Kata7 {
             finalList.add(sum);
         }
         return finalList;
+    }
+    public static int duplicateCount(String text) {
+
+        char[] textInArray = text.toUpperCase().toCharArray();
+        Set<Character> uniqueValueSet = new HashSet<Character>();
+        for (Character arrayWithValues : textInArray){
+            uniqueValueSet.add(arrayWithValues);
+        }
+        Character[] uniqueCharsInArray = uniqueValueSet.toArray(new Character[uniqueValueSet.size()]);
+
+        int countFinalDuplicates=0;
+        for (int j=0;j<uniqueCharsInArray.length;j++) {
+            int countDuplicates = 0;
+
+            for (int i=0; i < textInArray.length; i++) {
+                if (textInArray[i]==uniqueCharsInArray[j]) {
+                    countDuplicates++;
+                }
+            }
+            if (countDuplicates>1){
+                countFinalDuplicates ++;
+            }
+        }
+        return countFinalDuplicates;
     }
 }
