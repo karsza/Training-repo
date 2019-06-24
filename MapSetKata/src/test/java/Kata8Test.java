@@ -13,6 +13,7 @@ class Kata8Test {
         @Test
         public void kataTest() {
             System.out.println("Basic Tests smallest");
+//            testing(47116962473806544 ,"[7116962473846544,12,0]");
             testing(261235, "[126235, 2, 0]");
             testing(209917, "[29917, 1, 0]");
             testing(285365, "[238565, 3, 1]");
