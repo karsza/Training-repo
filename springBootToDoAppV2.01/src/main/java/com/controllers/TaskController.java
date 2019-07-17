@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.awt.*;
 import java.util.List;
 
 @Controller
@@ -24,5 +23,11 @@ public class TaskController {
     @ResponseBody
     public void addTask (@RequestBody Task task){
         TaskRepository.getInstance().addTask(task);
+    }
+    @RequestMapping (method = RequestMethod.DELETE,value = "/toDo/delete", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public String deleteTask (@RequestBody Task task){
+        TaskRepository.getInstance().deleteTask(task);
+    return task.toString() + "-deleted";
     }
 }

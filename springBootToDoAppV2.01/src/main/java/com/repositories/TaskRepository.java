@@ -36,6 +36,14 @@ public class TaskRepository {
         }
         return "Update of " + task + " not successful";
     }
+    public String deleteTask (Task task){
+        if (toDo.contains(task)){
+            toDo.remove(task);
+            return "Task deleted";
+        }
+        return "Task not found";
+    }
+
     public List<Task> getAllTasks(){
         return toDo;
     }
