@@ -19,15 +19,18 @@ public class TaskController {
     public List<Task> getAllTasks(){
         return TaskRepository.getInstance().getAllTasks();
     }
+
     @RequestMapping (method = RequestMethod.POST,value = "/toDo/add", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public void addTask (@RequestBody Task task){
+    public String addTask (@RequestBody Task task){
         TaskRepository.getInstance().addTask(task);
+        return "added";
     }
+
     @RequestMapping (method = RequestMethod.DELETE,value = "/toDo/delete", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public String deleteTask (@RequestBody Task task){
         TaskRepository.getInstance().deleteTask(task);
-    return task.toString() + "-deleted";
+        return task.toString() + "-deleted";
     }
 }
