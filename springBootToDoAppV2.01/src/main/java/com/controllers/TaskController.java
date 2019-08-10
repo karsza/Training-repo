@@ -2,12 +2,10 @@ package com.controllers;
 
 import com.domain.Task;
 import com.repositories.TaskRepository;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,18 +17,16 @@ public class TaskController {
     public List<Task> getAllTasks(){
         return TaskRepository.getInstance().getAllTasks();
     }
-
+    @ResponseStatus (value= HttpStatus.CREATED,reason = "Task added")
     @RequestMapping (method = RequestMethod.POST,value = "/toDo/add", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public String addTask (@RequestBody Task task){
+    public void addTask (@RequestBody Task task){
         TaskRepository.getInstance().addTask(task);
-        return "added";
     }
-
     @RequestMapping (method = RequestMethod.DELETE,value = "/toDo/delete", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus (value= HttpStatus.ACCEPTED ,reason = "Task deleted")
     @ResponseBody
-    public String deleteTask (@RequestBody Task task){
+    public void deleteTask (@RequestBody Task task){
         TaskRepository.getInstance().deleteTask(task);
-        return task.toString() + "-deleted";
     }
 }

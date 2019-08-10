@@ -29,17 +29,15 @@ public class TaskDatabase {
         }
     }
 
-    public static void createNewTableIfDoesntExists() {
+    public static void createNewTableIfNoExists() {
         String sql = "CREATE TABLE IF NOT EXISTS ToDoList(\n"
-                + "	subject text PRIMARY KEY, \n"
+                + "	subject text NOT NULL, \n"
                 + "	status text NOT NULL\n"
                 + ");";
         executeSql(sql);
         System.out.println("Table has been created.");
 
     }
-
-
     public static void dropTable() {
         String sql = "Drop table ToDoList";
         executeSql(sql);
@@ -71,7 +69,6 @@ public class TaskDatabase {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-
         return result;
     }
 

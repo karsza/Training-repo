@@ -15,7 +15,7 @@ public class TaskDatabaseTest {
         Task task1 = new Task("Test1",Status.IN_PROGRESS);
         TaskDatabase taskDatabase = new TaskDatabase();
 
-        taskDatabase.createNewTableIfDoesntExists();
+        taskDatabase.createNewTableIfNoExists();
         taskDatabase.insertTask(task1);
 
         List<Task> expectedResult= new ArrayList<>();
@@ -25,12 +25,5 @@ public class TaskDatabaseTest {
         System.out.println(resultFromDB.toString());
 
         assertArrayEquals(expectedResult.toArray(),resultFromDB.toArray());
-
-
-
-
-
-
-
     }
 }

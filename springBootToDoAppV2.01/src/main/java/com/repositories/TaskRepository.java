@@ -1,11 +1,13 @@
 package com.repositories;
 
 import com.domain.Task;
+import lombok.Data;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 @Repository
+@Data
 public class TaskRepository {
     private List<Task> toDo;
     private static TaskRepository taskList = null;
