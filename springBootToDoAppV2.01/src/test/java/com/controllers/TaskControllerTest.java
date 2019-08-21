@@ -14,10 +14,6 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -27,8 +23,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class TaskControllerTest {
     @Autowired
     private MockMvc mockMvc;
-//    @MockBean
-//    private TaskController taskController;
+
     @Test
     public void getAllTasksEmptyList() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders
@@ -42,7 +37,9 @@ public class TaskControllerTest {
     public void addTask() throws Exception {
 
         ObjectMapper mapper = new ObjectMapper();
-        Task task = new Task("Test", Status.IN_PROGRESS);
+        Task task = new Task();
+        task.setSubject("Test");
+        task.setStatus(Status.IN_PROGRESS);
         String jsonString = mapper.writeValueAsString(task);
 
         mockMvc.perform(MockMvcRequestBuilders
@@ -55,7 +52,9 @@ public class TaskControllerTest {
     @Test
     public void getAllTasks() throws Exception{
         TaskRepository toDo = TaskRepository.getInstance();
-        Task task = new Task("Test",Status.DONE);
+        Task task = new Task();
+        task.setSubject("Test");
+        task.setStatus(Status.DONE);
         toDo.addTask(task);
 
         ObjectMapper mapper = new ObjectMapper();
@@ -87,7 +86,9 @@ public class TaskControllerTest {
     @Test
     public void deleteTask() throws Exception{
         ObjectMapper mapper = new ObjectMapper();
-        Task task = new Task("Test1", Status.IN_PROGRESS);
+        Task task = new Task();
+        task.setSubject("Test1");
+        task.setStatus(Status.IN_PROGRESS);
         String jsonString = mapper.writeValueAsString(task);
 
         mockMvc.perform(MockMvcRequestBuilders
