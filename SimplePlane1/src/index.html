@@ -5,16 +5,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <title>Document</title>
 </head>
 
 <body>
 
     <header>
-        <div id="logo" alt="Logo">LOGO
-        </div>
-        <nav id="zaloguj">Zaloguj sie</div>
+        <div id="logo">~ AIR ADVENTURE ~</div>
+        <nav id="zaloguj" class="btn btn-big openmodale">Zaloguj</nav>
     </header>
+    <div class="modale" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <h2>Please Login</h2>
+                <a href="#" class="btn-close closemodale" aria-hidden="true">&times;</a>
+            </div>
+            <div class="modal-body">
+                <input type="text" name="u" placeholder="User" size="20" /><br>
+                <input type="text" name="p" placeholder="&bull;&bull;&bull;&bull;" size="20" /></div>
+            <div class="modal-footer">
+
+
+                <a href="#" class="btn" id="btn_ingresar">Login</a>
+            </div>
+        </div>
+    </div>
+
     <div class="container">
         <ul class="form-style-1">
             <li>
@@ -44,14 +61,10 @@
                 <input type="date" id="powrot">
             </li>
             <li>
-                <input type="submit" value="Wyszukaj" />
+                <input type="submit" id="wyszukaj" value="wyszukaj" />
             </li>
         </ul>
     </div>
-
-
-
-    <!-- <img src="./pics/simpleplane.svg" alt="" class="dissapear"> -->
 
     <footer>
         <div class="copy">&copy; Copyright Karolina</div>
